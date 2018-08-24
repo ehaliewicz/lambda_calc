@@ -5,6 +5,16 @@
 #include "string.h"
 #include "setjmp.h"
 
+
+/*
+ syntax
+
+   lambda = '\' symbol expr 
+   application = '(' expr expr ')'
+   symbol = a-z[^\s\(\)\\]*
+
+*/
+
 typedef enum {
   APPLICATION, LAMBDA, SYMBOL
 } type;
@@ -80,12 +90,6 @@ void skip_whitespace() {
 // longjmp to this buffer
 jmp_buf error;
 
-
-// syntax
-
-// lambda: '\' symbol expr 
-// application: '(' expr expr ')'
-// symbol: a-z[^\s\(\)\\]*
 
 struct expr* parse_expression();
 
