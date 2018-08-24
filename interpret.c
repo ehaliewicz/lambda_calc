@@ -1,10 +1,9 @@
-// interpret lambda calculus in a few lines (^:
+// interpret lambda calculus in 256 lines (^:
 #include "stdio.h"
 #include "stdlib.h"
 #include "ctype.h"
 #include "string.h"
 #include "setjmp.h"
-
 
 /*
  syntax
@@ -89,7 +88,6 @@ void skip_whitespace() {
 // if we ever encounter an error in parsing or evaluation
 // longjmp to this buffer
 jmp_buf error;
-
 
 struct expr* parse_expression();
 
@@ -211,7 +209,6 @@ struct expr* eval_application(struct expr* exp, struct env* environment) {
   // extract operator and operand, and evaluate them body
   struct expr* operator = eval_expression(exp->app->operator, environment);
   struct expr* operand = eval_expression(exp->app->operand, environment);
-  
   struct env* operator_env = operator->lam->environ;
   
   // bind argument to arg name in freshly allocated environment frame

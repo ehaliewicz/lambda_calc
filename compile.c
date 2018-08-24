@@ -1,11 +1,9 @@
-// compile lambda calculus in a few lines (^:
+// compile lambda calculus in a 512 lines (^:
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 #include <setjmp.h>
-
-
 
 /*
    syntax
@@ -14,8 +12,6 @@
    application = '(' expr expr ')'
    symbol = a-z[^\s\(\)\\]*
 */
-
-
 
 // syntax tree structures and utility functions
 
