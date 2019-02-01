@@ -362,15 +362,15 @@ void print_value(struct val* v) {
   }
 }
 
+#define STACK_SZ 1024
+struct renv *env_stack[STACK_SZ];
+int esp = STACK_SZ;
 
-struct renv *env_stack[1024];
-int esp = 1024;
+int return_stack[STACK_SZ];
+int rsp = STACK_SZ;
 
-int return_stack[1024];
-int rsp = 1024;
-
-struct val *object_stack[1024];
-int sp = 1024;
+struct val *object_stack[STACK_SZ];
+int sp = STACK_SZ;
 
 struct val* execute_program(struct buffer* buf) {
   printf("Executing program\n");
@@ -485,7 +485,7 @@ struct val* execute_program(struct buffer* buf) {
       
     }
   }
-  if(sp != 1023) {
+  if(sp != STACK_SZ-1) {
     printf("Execution ended with more than one item on the stack!\n");
     exit(1);
   }
